@@ -15,8 +15,8 @@ Testing Text.PortableLines
     [""]
     ["",""]
     ["",""]
-    Prelude.undefined
-    Prelude.undefined
+    ["Hello*** Exception: Prelude.undefined
+    ["Hello"*** Exception: Prelude.undefined
 Testing Text.PortableLines.ByteString.Char8
     ["Hello"]
     []

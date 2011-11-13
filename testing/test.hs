@@ -6,11 +6,22 @@ import qualified Data.ByteString.Char8 as B8
 import qualified Text.Portable as P
 import qualified Text.Portable.ByteString.Char8 as PB
 
+printCatchException :: (Show a) => a -> IO ()
+printCatchException = loop id . show
+    where
+        loop dl cons = do
+            e <- try $ evaluate cons
+            case e of
+                Left ex -> putStrLn $
+                    dl . ("*** Exception: " ++) . (show (ex :: ErrorCall) ++) $ []
+                Right (x:xs)   -> loop (dl . (x:)) xs
+                Right []       -> putStrLn $ dl []
+
 test :: String -> IO ()
-test str = print (P.lines str) `catch` \e -> print (e :: ErrorCall)
+test = printCatchException . P.lines
 
 test_bytestring :: String -> IO ()
-test_bytestring str = print (PB.lines $ B8.pack str) `catch` \e -> print (e :: ErrorCall)
+test_bytestring = printCatchException . PB.lines . B8.pack
 
 tests :: [String]
 tests =
