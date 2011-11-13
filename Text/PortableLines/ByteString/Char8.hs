@@ -1,4 +1,4 @@
-module Text.Portable.ByteString.Char8 (lines) where
+module Text.PortableLines.ByteString.Char8 (lines) where
 
 import Prelude as P hiding (lines)
 

@@ -1,4 +1,4 @@
-module Text.Portable
+module Text.PortableLines
     ( lines
     ) where
 
