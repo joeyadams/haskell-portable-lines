@@ -2,7 +2,8 @@ module Text.PortableLines
     ( lines
     ) where
 
-import Prelude as P hiding (lines)
+import Prelude hiding (lines)
+import qualified Prelude as P
 
 -- | Like the 'P.lines' function from Prelude, but treat the @\"\\r\\n\"@ and
 --   @\"\\r\"@ sequences as newlines too, not just @\"\\n\"@.

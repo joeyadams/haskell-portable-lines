@@ -2,12 +2,13 @@ module Text.PortableLines.ByteString.Char8 (lines) where
 
 import Prelude as P hiding (lines)
 
-import Data.ByteString.Char8 as C (ByteString)
+import Data.ByteString.Char8 (ByteString)
 import Data.ByteString.Unsafe (unsafeIndex, unsafeTake, unsafeDrop)
 
 import qualified Data.ByteString as B
+import qualified Data.ByteString.Char8 as B8
 
--- | Like the 'C.lines' function from Data.ByteString.Char8, but treat the
+-- | Like the 'B8.lines' function from Data.ByteString.Char8, but treat the
 -- @\"\\r\\n\"@ and @\"\\r\"@ sequences as newlines too, not just @\"\\n\"@.
 lines :: ByteString -> [ByteString]
 lines str | B.null str = []
