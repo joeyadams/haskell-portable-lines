@@ -15,7 +15,6 @@ test_bytestring str = print (PB.lines $ B8.pack str) `catch` \e -> print (e :: E
 tests :: [String]
 tests =
     [ "Hello"
-    , "Hello"
     , ""
     , "H"
     , "Hello\n"
