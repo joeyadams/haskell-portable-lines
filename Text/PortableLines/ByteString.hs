@@ -1,4 +1,6 @@
-module Text.PortableLines.ByteString.Char8 (lines) where
+module Text.PortableLines.ByteString
+    ( lines8
+    ) where
 
 import Prelude as P hiding (lines)
 
@@ -10,13 +12,17 @@ import qualified Data.ByteString.Char8 as B8
 
 -- | Like the 'B8.lines' function from Data.ByteString.Char8, but treat the
 -- @\"\\r\\n\"@ and @\"\\r\"@ sequences as newlines too, not just @\"\\n\"@.
-lines :: ByteString -> [ByteString]
-lines str | B.null str = []
-          | otherwise  = let (line, rest) = breakNewline str
-                          in line : lines rest
+--
+-- Input is assumed to be in ASCII or an ASCII-compatible encoding (at least
+-- with respect to newline characters).  For example, UTF-8 is fine, but UTF-16
+-- is not.
+lines8 :: ByteString -> [ByteString]
+lines8 str | B.null str = []
+           | otherwise  = let (line, rest) = breakNewline8 str
+                           in line : lines8 rest
 
-breakNewline :: ByteString -> (ByteString, ByteString)
-breakNewline string = search 0
+breakNewline8 :: ByteString -> (ByteString, ByteString)
+breakNewline8 string = search 0
     where
         len = B.length string
 

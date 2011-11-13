@@ -3,8 +3,8 @@ import Prelude hiding (catch, lines)
 import Control.Exception
 
 import qualified Data.ByteString.Char8 as B8
-import qualified Text.Portable as P
-import qualified Text.Portable.ByteString.Char8 as PB
+import qualified Text.PortableLines as P
+import qualified Text.PortableLines.ByteString as PB
 
 printCatchException :: (Show a) => a -> IO ()
 printCatchException = loop id . show
@@ -21,7 +21,7 @@ test :: String -> IO ()
 test = printCatchException . P.lines
 
 test_bytestring :: String -> IO ()
-test_bytestring = printCatchException . PB.lines . B8.pack
+test_bytestring = printCatchException . PB.lines8 . B8.pack
 
 tests :: [String]
 tests =

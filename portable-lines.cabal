@@ -13,7 +13,7 @@ cabal-version:       >=1.8
 
 library
     exposed-modules: Text.PortableLines
-                   , Text.PortableLines.ByteString.Char8
+                   , Text.PortableLines.ByteString
     build-depends: base == 4.*
                  , bytestring
     ghc-options: -Wall -O2
