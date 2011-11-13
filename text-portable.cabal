@@ -1,0 +1,19 @@
+name:                text-portable
+version:             0.1
+synopsis:            Alternative 'lines' implementation supporting other newline formats
+-- description:         
+license:             BSD3
+license-file:        LICENSE
+author:              Joey Adams
+maintainer:          joeyadams3.14159@gmail.com
+copyright:           Copyright (c) Joseph Adams 2011
+category:            Text
+build-type:          Simple
+cabal-version:       >=1.8
+
+library
+    exposed-modules: Text.Portable
+                   , Text.Portable.ByteString.Char8
+    build-depends: base == 4.*
+                 , bytestring
+    ghc-options: -Wall -O2
