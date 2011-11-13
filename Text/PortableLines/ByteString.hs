@@ -5,7 +5,7 @@ module Text.PortableLines.ByteString
 import Prelude as P hiding (lines)
 
 import Data.ByteString.Char8 (ByteString)
-import Data.ByteString.Unsafe (unsafeIndex, unsafeTake, unsafeDrop)
+import Data.ByteString.Unsafe (unsafeIndex, unsafeTail, unsafeDrop)
 
 import qualified Data.ByteString as B
 import qualified Data.ByteString.Char8 as B8
@@ -22,17 +22,10 @@ lines8 str | B.null str = []
                            in line : lines8 rest
 
 breakNewline8 :: ByteString -> (ByteString, ByteString)
-breakNewline8 string = search 0
-    where
-        len = B.length string
-
-        byte_at i | i < len   = Just (string `unsafeIndex` i)
-                  | otherwise = Nothing
-
-        search i = case byte_at i of
-            Nothing -> (string, B.empty)
-            Just 10 -> (unsafeTake i string, unsafeDrop (i+1) string)
-            Just 13 -> case byte_at (i+1) of
-                Just 10 -> (unsafeTake i string, unsafeDrop (i+2) string)
-                _       -> (unsafeTake i string, unsafeDrop (i+1) string)
-            _       -> search (i+1)
+breakNewline8 str =
+    case B.break (\c -> c == 13 || c == 10) str of
+        (line, rest) | B.null rest                      -> (line, rest)
+                     | B.length rest >= 2 &&
+                       rest `unsafeIndex` 0 == 13 &&
+                       rest `unsafeIndex` 1 == 10       -> (line, unsafeDrop 2 rest)
+                     | otherwise                        -> (line, unsafeTail rest)
