@@ -33,6 +33,7 @@ cabal-version:       >=1.8
 library
     exposed-modules: Text.PortableLines
                    , Text.PortableLines.ByteString
+                   , Text.PortableLines.ByteString.Lazy
     build-depends: base == 4.*
                  , bytestring
     ghc-options: -Wall -O2
