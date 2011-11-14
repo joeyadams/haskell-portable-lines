@@ -17,7 +17,7 @@ Testing Text.PortableLines
     ["",""]
     ["Hello*** Exception: Prelude.undefined
     ["Hello"*** Exception: Prelude.undefined
-Testing Text.PortableLines.ByteString.Char8
+Testing Text.PortableLines.ByteString
     ["Hello"]
     []
     ["H"]
@@ -34,4 +34,21 @@ Testing Text.PortableLines.ByteString.Char8
     [""]
     ["",""]
     ["",""]
+Testing Text.PortableLines.ByteString.Lazy
+    [Chunk "Hello" Empty]
+    []
+    [Chunk "H" Empty]
+    [Chunk "Hello" Empty]
+    [Chunk "Hello" Empty]
+    [Chunk "Hello" Empty]
+    [Chunk "Hello" Empty,Chunk "bye" Empty]
+    [Chunk "Hello" Empty,Chunk "bye" Empty]
+    [Chunk "Hello" Empty,Empty,Chunk "bye" Empty]
+    [Chunk "Hello" Empty,Chunk "world" Empty]
+    [Chunk "Hello" Empty,Chunk "world" Empty]
+    [Empty]
+    [Empty]
+    [Empty]
+    [Empty,Empty]
+    [Empty,Empty]
 Done
