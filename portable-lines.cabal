@@ -30,6 +30,10 @@ category:            Text
 build-type:          Simple
 cabal-version:       >=1.8
 
+extra-source-files:
+    testing/test.hs
+    testing/expected
+
 source-repository head
     type:       git
     location:   git://github.com/joeyadams/haskell-portable-lines.git
