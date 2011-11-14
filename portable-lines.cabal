@@ -1,6 +1,6 @@
 name:                portable-lines
 version:             0.1
-synopsis:            Alternative 'lines' implementation supporting other newline formats
+synopsis:            Alternative 'lines' implementation that understands CR-LF and CR
 description:
     Provides an alternative implementation of the 'Prelude.lines' function that
     treats the following sequences as newline characters:
